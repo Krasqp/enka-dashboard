@@ -137,6 +137,69 @@ export default function ProjelerPage() {
           Proje verileri operasyon paneli ile senkronize çalışır
         </div>
 
+
+      {/* FOOTER */}
+      <footer className="mt-32 border-t border-neutral-800 bg-black px-6 py-14 text-sm text-neutral-400">
+  <div className="mx-auto max-w-6xl grid grid-cols-1 md:grid-cols-3 gap-10">
+
+    {/* SOL – KURUM */}
+    <div>
+      <h4 className="mb-3 text-white tracking-wide">FASAD STROY</h4>
+      <p className="text-neutral-500">
+        Operasyon & Saha Yönetim Paneli
+      </p>
+      <p className="mt-3 text-xs text-neutral-600">
+        Veriler Google Sheets üzerinden<br />
+        anlık olarak senkronize edilir.
+      </p>
+    </div>
+
+    {/* ORTA – İLETİŞİM */}
+    <div>
+      <h4 className="mb-3 text-white tracking-wide">İletişim</h4>
+      <ul className="space-y-2">
+        <li>
+          📧{" "}
+          <a
+            href="mailto:info@fasadstroy.com"
+            className="hover:text-white transition"
+          >
+            info@fasadstroy.com
+          </a>
+        </li>
+        <li>
+          ☎️{" "}
+          <a
+            href="tel:+74951234567"
+            className="hover:text-white transition"
+          >
+            +7 (495) 123-45-67
+          </a>
+        </li>
+        <li>📍 Moskova, Rusya</li>
+      </ul>
+    </div>
+
+    {/* SAĞ – SİSTEM */}
+    <div>
+      <h4 className="mb-3 text-white tracking-wide">Sistem</h4>
+      <p className="text-neutral-500">
+        Yetkili personel kullanımı içindir.
+      </p>
+      <p className="mt-2 text-xs text-neutral-600">
+        v0.3 • Internal Use
+      </p>
+    </div>
+
+  </div>
+
+  {/* ALT ÇİZGİ */}
+  <div className="mt-12 text-center text-xs text-neutral-600">
+    © {new Date().getFullYear()} Fasad Stroy. Tüm hakları saklıdır.
+  </div>
+</footer>
+
+
       </div>
     </main>
   );

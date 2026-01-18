@@ -164,9 +164,10 @@ export default function EnkaLuzhnikiPage() {
   const [activeTab, setActiveTab] = useState<"kadro" | "ilerleme">("kadro");
 
   /* ===== PROJE İLERLEME ALT SEKME ===== */
-  const [ilerlemeTab, setIlerlemeTab] = useState<"dashboard" | "ilerleme">(
-    "dashboard"
-  );
+  const [ilerlemeTab, setIlerlemeTab] = useState<
+  "dashboard" | "ilerleme" | "gorsel"
+>("dashboard");
+
 
   /* ===== MEVCUT STATE’LER (DOKUNULMADI) ===== */
   const [kadro, setKadro] = useState<Personel[]>([]);
@@ -429,6 +430,18 @@ useEffect(() => {
               >
                 İlerleme
               </button>
+
+<button
+  onClick={() => setIlerlemeTab("gorsel")}
+  className={`px-4 py-2 rounded ${
+    ilerlemeTab === "gorsel"
+      ? "bg-white text-black"
+      : "bg-neutral-800"
+  }`}
+>
+  Sevkiyat & Montaj Görsel İlerleme
+</button>
+
             </div>
 
             {/* DASHBOARD */}
@@ -685,10 +698,10 @@ useEffect(() => {
           </div>
         ))}
       </div>
+
     </div>
   )
 )}
-
 
     {/* DİĞERLER – HİÇ DEĞİŞMEDİ */}
     {[
@@ -706,7 +719,421 @@ useEffect(() => {
   </div>
 )}
 
+{/* =====================
+    GÖRSEL İLERLEME (AYRI!) C2
+===================== */}
+{ilerlemeTab === "gorsel" && (
+  <div className="rounded-xl bg-neutral-900 p-4">
+    <div className="flex items-start justify-between mb-3">
+  <h4 className="text-sm text-neutral-300">
+    C2 – Sevkiyat & Montaj Görsel İlerleme
+  </h4>
 
+  {/* LEGEND */}
+  <div className="flex items-center gap-4 text-xs bg-black/60 px-3 py-2 rounded-md border border-neutral-700">
+    <div className="flex items-center gap-1">
+      <span className="w-3 h-3 bg-green-500 rounded-sm" />
+      <span>Montaj yapılmış</span>
+    </div>
+
+    <div className="flex items-center gap-1">
+      <span className="w-3 h-3 bg-red-500 rounded-sm" />
+      <span>Kule vinç ayakları / Alimak</span>
+    </div>
+
+    <div className="flex items-center gap-1">
+      <span className="w-3 h-3 bg-neutral-300 rounded-sm" />
+      <span>Sevkiyat yapılmadı</span>
+    </div>
+  </div>
+</div>
+
+
+
+    {/* DIŞ KUTU */}
+    <div
+      className="border border-neutral-700 rounded-lg overflow-x-auto overflow-y-hidden"
+      style={{
+        height: "560px",
+        maxWidth: "100%",
+      }}
+    >
+
+
+      {/* İÇ KUTU (SADECE SAĞA GİDEBİLİR) */}
+      <div
+        style={{
+          width: "2400px", // 🔥 2. / 3. / 4. öncelik için GENİŞ
+          height: "420px",
+          pointerEvents: "none",
+        }}
+      >
+
+
+        <iframe
+          src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTk7P1M7_-hj7u3DR6cXwgq0LKKfSlhLXUczMp8a33wnbJCYlf8G4xxJonSpAP74BuFipCKTw9BlY_n/pubhtml?gid=989525659&single=true"
+          style={{
+            width: "5000px",
+            height: "20000px",
+            border: "0",
+
+            /* 👇 ASIL KRİTİK KISIM */
+            transform: `
+              scale(0.6)
+              translateX(-920px)   /* ❌ SOL TABLO TAMAMEN YOK */
+              translateY(-100px)    /* 16–8. KAT ARALIĞI */
+            `,
+            transformOrigin: "top left",
+          }}
+        />
+      </div>
+    </div>
+
+    <p className="mt-2 text-xs text-neutral-500">
+      Google E-Tablo İle Senkronize Edildi.
+    </p>
+  </div>
+)}
+
+{/* ===== BLOK AYIRICI ===== */}
+<div className="relative my-10">
+  {/* çizgi */}
+  <div className="h-px bg-neutral-700 w-full" />
+
+  {/* ortadaki vurgu */}
+  <div className="absolute left-1/2 -translate-x-1/2 -top-3 bg-black px-4 text-xs text-neutral-400">
+  </div>
+</div>
+
+
+
+{/* =====================
+    GÖRSEL İLERLEME (AYRI!) A1
+===================== */}
+{ilerlemeTab === "gorsel" && (
+  <div className="rounded-xl bg-neutral-900 p-4">
+    <div className="flex items-start justify-between mb-3">
+  <h4 className="text-sm text-neutral-300">
+    A1 – Sevkiyat & Montaj Görsel İlerleme
+  </h4>
+
+  {/* LEGEND */}
+  <div className="flex items-center gap-4 text-xs bg-black/60 px-3 py-2 rounded-md border border-neutral-700">
+    <div className="flex items-center gap-1">
+      <span className="w-3 h-3 bg-green-500 rounded-sm" />
+      <span>Montaj yapılmış</span>
+    </div>
+
+    <div className="flex items-center gap-1">
+      <span className="w-3 h-3 bg-red-500 rounded-sm" />
+      <span>Kule vinç ayakları / Alimak</span>
+    </div>
+
+    <div className="flex items-center gap-1">
+      <span className="w-3 h-3 bg-neutral-300 rounded-sm" />
+      <span>Sevkiyat yapılmadı</span>
+    </div>
+  </div>
+</div>
+
+
+    {/* DIŞ KUTU */}
+    <div
+      className="border border-neutral-700 rounded-lg overflow-x-auto overflow-y-hidden"
+      style={{
+        height: "590px",
+        maxWidth: "100%",
+      }}
+    >
+      {/* İÇ KUTU (SADECE SAĞA GİDEBİLİR) */}
+      <div
+        style={{
+          width: "2400px", // 🔥 2. / 3. / 4. öncelik için GENİŞ
+          height: "420px",
+          pointerEvents: "none",
+        }}
+      >
+        <iframe
+          src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTk7P1M7_-hj7u3DR6cXwgq0LKKfSlhLXUczMp8a33wnbJCYlf8G4xxJonSpAP74BuFipCKTw9BlY_n/pubhtml?gid=989525659&single=true"
+          style={{
+            width: "5000px",
+            height: "20000px",
+            border: "0",
+
+            /* 👇 ASIL KRİTİK KISIM */
+            transform: `
+              scale(0.6)
+              translateX(-920px)   /* ❌ SOL TABLO TAMAMEN YOK */
+              translateY(-1040px)    /* 16–8. KAT ARALIĞI */
+            `,
+            transformOrigin: "top left",
+          }}
+        />
+      </div>
+    </div>
+
+    <p className="mt-2 text-xs text-neutral-500">
+       Google E-Tablo İle Senkronize Edildi.
+    </p>
+  </div>
+)}
+
+{/* ===== BLOK AYIRICI ===== */}
+<div className="relative my-10">
+  {/* çizgi */}
+  <div className="h-px bg-neutral-700 w-full" />
+
+  {/* ortadaki vurgu */}
+  <div className="absolute left-1/2 -translate-x-1/2 -top-3 bg-black px-4 text-xs text-neutral-400">
+  </div>
+</div>
+
+
+{/* =====================
+    GÖRSEL İLERLEME (AYRI!) C1
+===================== */}
+{ilerlemeTab === "gorsel" && (
+  <div className="rounded-xl bg-neutral-900 p-4">
+    <div className="flex items-start justify-between mb-3">
+  <h4 className="text-sm text-neutral-300">
+    C1 – Sevkiyat & Montaj Görsel İlerleme
+  </h4>
+
+  {/* LEGEND */}
+  <div className="flex items-center gap-4 text-xs bg-black/60 px-3 py-2 rounded-md border border-neutral-700">
+    <div className="flex items-center gap-1">
+      <span className="w-3 h-3 bg-green-500 rounded-sm" />
+      <span>Montaj yapılmış</span>
+    </div>
+
+    <div className="flex items-center gap-1">
+      <span className="w-3 h-3 bg-red-500 rounded-sm" />
+      <span>Kule vinç ayakları / Alimak</span>
+    </div>
+
+    <div className="flex items-center gap-1">
+      <span className="w-3 h-3 bg-neutral-300 rounded-sm" />
+      <span>Sevkiyat yapılmadı</span>
+    </div>
+  </div>
+</div>
+
+
+    {/* DIŞ KUTU */}
+    <div
+      className="border border-neutral-700 rounded-lg overflow-x-auto overflow-y-hidden"
+      style={{
+        height: "590px",
+        maxWidth: "100%",
+      }}
+    >
+      {/* İÇ KUTU (SADECE SAĞA GİDEBİLİR) */}
+      <div
+        style={{
+          width: "2400px", // 🔥 2. / 3. / 4. öncelik için GENİŞ
+          height: "420px",
+          pointerEvents: "none",
+        }}
+      >
+        <iframe
+          src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTk7P1M7_-hj7u3DR6cXwgq0LKKfSlhLXUczMp8a33wnbJCYlf8G4xxJonSpAP74BuFipCKTw9BlY_n/pubhtml?gid=989525659&single=true"
+          style={{
+            width: "5000px",
+            height: "20000px",
+            border: "0",
+
+            /* 👇 ASIL KRİTİK KISIM */
+            transform: `
+              scale(0.6)
+              translateX(-920px)   /* ❌ SOL TABLO TAMAMEN YOK */
+              translateY(-2030px)    /* 16–8. KAT ARALIĞI */
+            `,
+            transformOrigin: "top left",
+          }}
+        />
+      </div>
+    </div>
+
+    <p className="mt-2 text-xs text-neutral-500">
+       Google E-Tablo İle Senkronize Edildi.
+    </p>
+  </div>
+)}
+
+{/* ===== BLOK AYIRICI ===== */}
+<div className="relative my-10">
+  {/* çizgi */}
+  <div className="h-px bg-neutral-700 w-full" />
+
+  {/* ortadaki vurgu */}
+  <div className="absolute left-1/2 -translate-x-1/2 -top-3 bg-black px-4 text-xs text-neutral-400">
+  </div>
+</div>
+
+
+{/* =====================
+    GÖRSEL İLERLEME (AYRI!) A2
+===================== */}
+{ilerlemeTab === "gorsel" && (
+  <div className="rounded-xl bg-neutral-900 p-4">
+    <div className="flex items-start justify-between mb-3">
+  <h4 className="text-sm text-neutral-300">
+    A2 – Sevkiyat & Montaj Görsel İlerleme
+  </h4>
+
+  {/* LEGEND */}
+  <div className="flex items-center gap-4 text-xs bg-black/60 px-3 py-2 rounded-md border border-neutral-700">
+    <div className="flex items-center gap-1">
+      <span className="w-3 h-3 bg-green-500 rounded-sm" />
+      <span>Montaj yapılmış</span>
+    </div>
+
+    <div className="flex items-center gap-1">
+      <span className="w-3 h-3 bg-red-500 rounded-sm" />
+      <span>Kule vinç ayakları / Alimak</span>
+    </div>
+
+    <div className="flex items-center gap-1">
+      <span className="w-3 h-3 bg-neutral-300 rounded-sm" />
+      <span>Sevkiyat yapılmadı</span>
+    </div>
+  </div>
+</div>
+
+
+    {/* DIŞ KUTU */}
+    <div
+      className="border border-neutral-700 rounded-lg overflow-x-auto overflow-y-hidden"
+      style={{
+        height: "590px",
+        maxWidth: "100%",
+      }}
+    >
+      {/* İÇ KUTU (SADECE SAĞA GİDEBİLİR) */}
+      <div
+        style={{
+          width: "2500px", // 🔥 2. / 3. / 4. öncelik için GENİŞ
+          height: "420px",
+          pointerEvents: "none",
+        }}
+      >
+        <iframe
+          src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTk7P1M7_-hj7u3DR6cXwgq0LKKfSlhLXUczMp8a33wnbJCYlf8G4xxJonSpAP74BuFipCKTw9BlY_n/pubhtml?gid=989525659&single=true"
+          style={{
+            width: "5300px",
+            height: "20000px",
+            border: "0",
+
+            /* 👇 ASIL KRİTİK KISIM */
+            transform: `
+              scale(0.6)
+              translateX(-920px)   /* ❌ SOL TABLO TAMAMEN YOK */
+              translateY(-3030px)    /* 16–8. KAT ARALIĞI */
+            `,
+            transformOrigin: "top left",
+          }}
+        />
+      </div>
+    </div>
+
+    <p className="mt-2 text-xs text-neutral-500">
+       Google E-Tablo İle Senkronize Edildi.
+    </p>
+  </div>
+)}
+
+{/* ===== BLOK AYIRICI ===== */}
+<div className="relative my-10">
+  {/* çizgi */}
+  <div className="h-px bg-neutral-700 w-full" />
+
+  {/* ortadaki vurgu */}
+  <div className="absolute left-1/2 -translate-x-1/2 -top-3 bg-black px-4 text-xs text-neutral-400">
+  </div>
+</div>
+
+{/* =====================
+    GÖRSEL İLERLEME (AYRI!) A3
+===================== */}
+{ilerlemeTab === "gorsel" && (
+  <div className="rounded-xl bg-neutral-900 p-4">
+    <div className="flex items-start justify-between mb-3">
+  <h4 className="text-sm text-neutral-300">
+    A3 – Sevkiyat & Montaj Görsel İlerleme
+  </h4>
+
+  {/* LEGEND */}
+  <div className="flex items-center gap-4 text-xs bg-black/60 px-3 py-2 rounded-md border border-neutral-700">
+    <div className="flex items-center gap-1">
+      <span className="w-3 h-3 bg-green-500 rounded-sm" />
+      <span>Montaj yapılmış</span>
+    </div>
+
+    <div className="flex items-center gap-1">
+      <span className="w-3 h-3 bg-red-500 rounded-sm" />
+      <span>Kule vinç ayakları / Alimak</span>
+    </div>
+
+    <div className="flex items-center gap-1">
+      <span className="w-3 h-3 bg-neutral-300 rounded-sm" />
+      <span>Sevkiyat yapılmadı</span>
+    </div>
+  </div>
+</div>
+
+
+
+    {/* DIŞ KUTU */}
+    <div
+      className="border border-neutral-700 rounded-lg overflow-x-auto overflow-y-hidden"
+      style={{
+        height: "590px",
+        maxWidth: "100%",
+      }}
+    >
+      {/* İÇ KUTU (SADECE SAĞA GİDEBİLİR) */}
+      <div
+        style={{
+          width: "2500px", // 🔥 2. / 3. / 4. öncelik için GENİŞ
+          height: "420px",
+          pointerEvents: "none",
+        }}
+      >
+        <iframe
+          src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTk7P1M7_-hj7u3DR6cXwgq0LKKfSlhLXUczMp8a33wnbJCYlf8G4xxJonSpAP74BuFipCKTw9BlY_n/pubhtml?gid=989525659&single=true"
+          style={{
+            width: "5300px",
+            height: "20000px",
+            border: "0",
+
+            /* 👇 ASIL KRİTİK KISIM */
+            transform: `
+              scale(0.6)
+              translateX(-920px)   /* ❌ SOL TABLO TAMAMEN YOK */
+              translateY(-4020px)    /* 16–8. KAT ARALIĞI */
+            `,
+            transformOrigin: "top left",
+          }}
+        />
+      </div>
+    </div>
+
+    <p className="mt-2 text-xs text-neutral-500">
+       Google E-Tablo İle Senkronize Edildi.
+    </p>
+  </div>
+)}
+
+
+{/* ===== BLOK AYIRICI ===== */}
+<div className="relative my-10">
+  {/* çizgi */}
+  <div className="h-px bg-neutral-700 w-full" />
+
+  {/* ortadaki vurgu */}
+  <div className="absolute left-1/2 -translate-x-1/2 -top-3 bg-black px-4 text-xs text-neutral-400">
+  </div>
+</div>
 
           </div>
         )}
